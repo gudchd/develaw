@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 9999; /* 다른 요소 위에 표시되도록 설정 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            #navigator .contact-info {
+                color: #000000;
+            }
+
+                #navigator .contact-info span {
+                    display: block;
+                    font-size: 14px;
+                }
+
+                #navigator .contact-info .phone {
+                    color: #666666;
+                }
+
+            #navigator button {
+                background-color: #007bff;
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+                padding: 8px 16px;
+                cursor: pointer;
+                margin-right: 20px; /* 우측 마진 추가 */
+            }
+
+        #chat-container {
+            max-width: 400px;
+            margin: 120px auto 50px; /* 네비게이터와 채팅창 사이의 여백 설정 */
+            position: relative;
+        }
+
+        .chat-message {
+            max-width: 70%;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .user {
+            background-color: #dddddd;
+            text-align: left;
+            float: right;
+            clear: both;
+        }
+
+        .helper {
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: right;
+            float: left;
+            clear: both;
+        }
+
+        #input-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: #ffffff;
+            border-top: 1px solid #ccc;
+        }
+
+        #input-box {
+            width: calc(100% - 110px); /* 버튼 너비와 간격만큼 뺀 크기 */
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        #send-button {
+            width: 80px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="navigator">
+        <div class="contact-info">
+            <span style="margin: 10px;"><b>서울법률상담센터</b></span>
+            <span class="phone" style="margin: 10px;">02-1234-1234</span>
+
+
+
+
+        </div>
+        <div>
+            <button style="background-color: #cccccc; color: #000000; margin-right: 10px;">기관 홈페이지</button>
+            <button id="close-chat">채팅 종료하기</button>
+        </div>
+    </div>
+    <div id="chat-container">
+        <div id="chat-output">
+            <div class="chat-message helper">
+                안녕하세요!
+            </div>
+            <div class="chat-message helper">
+                안녕하세요! 어떻게 도와드릴까요?
+            </div>
+        </div>
+    </div>
+    <div id="input-container">
+        <input type="text" id="input-box" placeholder="메시지를 입력하세요...">
+        <button id="send-button">전송</button>
+    </div>
+
+    <script>
+        // Send 버튼 클릭 시 채팅창에 메시지 추가
+        document.getElementById("send-button").addEventListener("click", function () {
+            var message = document.getElementById("input-box").value; // 입력된 메시지 가져오기
+            if (message.trim() !== "") { // 입력된 메시지가 비어있지 않으면
+                var chatOutput = document.getElementById("chat-output");
+                var newMessageUser = document.createElement("div");
+                var newMessageHelper = document.createElement("div");
+                newMessageUser.className = "chat-message user"; // user 클래스 추가
+                newMessageHelper.className = "chat-message helper"; // helper 클래스 추가
+                newMessageUser.textContent = message;
+                newMessageHelper.textContent = "저런!";
+                chatOutput.appendChild(newMessageUser); // 사용자 메시지 채팅창에 추가
+                chatOutput.appendChild(newMessageHelper); // helper 메시지 채팅창에 추가
+                document.getElementById("input-box").value = ""; // 입력 상자 초기화
+            }
+        });
+
+        // 채팅 종료 버튼 클릭 시
+        document.getElementById("close-chat").addEventListener("click", function () {
+            // 채팅창 숨기거나 페이지를 다른 곳으로 리다이렉트할 수 있음
+            alert("채팅이 종료되었습니다.");
+        });
+    </script>
+</body>
+</html>
