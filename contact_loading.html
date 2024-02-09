@@ -14,7 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -30,17 +30,31 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <style>
+        #loading-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경색 */
+            z-index: 9999;
+        }
+
+        #loading-icon {
+            width: 100px; /* 로딩 아이콘 크기 조정 */
+            height: 100px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -62,56 +76,27 @@
             </nav>
 
             <div class="container-xxl py-5 bg-primary hero-header">
+
                 <div class="container my-5 py-5 px-lg-5">
-                    <div class="row g-5 py-5">
-                        <div class="col-12 text-center">
-                            <h1 class="text-white animated slideInDown">Contact</h1>
-                            <hr class="bg-white mx-auto mt-0" style="width: 90px;">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                                    <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
+                    <!-- chatting ... -->
+
                 </div>
+
             </div>
         </div>
         <!-- Navbar & Hero End -->
         <!-- Contact Start -->
-        <div class="container-xxl py-5">
-            <div class="container py-5 px-lg-5">
-                <div class="wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="section-title text-secondary justify-content-center"><span></span>Contact Us<span></span></p>
-                    <h1 class="text-center mb-5">상담 시작하기</h1>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="text-center mb-4">현재 겪고 있는 법률 문제 상황에 대해 입력해 주세요. 입력한 내용은 암호화되어 AI로 분석됩니다. 법률 상담을 받을 수 있는 가장 적합한 기관을 분석한 후, 담당자와 1:1 채팅으로 연결해 드리겠습니다.</p>
-                            <form>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button id="sendButton" class="btn btn-primary w-100 py-3" type="button">Send Message</button>
-                                </div>
-                                <script>
-                                    document.getElementById("sendButton").addEventListener("click", function () {
-                                        window.location.href = "contact_loading.html";
-                                    });
-                                </script>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="loading-screen">
+            <img id="loading-icon" src="https://i.gifer.com/VAyR.gif" alt="로딩 중">
         </div>
+
+        <script>
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    window.location.href = 'help.html'; // help.html로 이동
+                }, 5000); // 5초 후에 help.html로 이동
+            });
+        </script>
         <!-- Contact End -->
         <!-- Footer Start -->
         <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
