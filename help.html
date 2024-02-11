@@ -153,7 +153,7 @@
                 newMessageUser.className = "chat-message user"; // user 클래스 추가
                 newMessageHelper.className = "chat-message helper"; // helper 클래스 추가
                 newMessageUser.textContent = message;
-                newMessageHelper.textContent = "저런!";
+                newMessageHelper.textContent = "해당 사안에 대한 답변을 준비 중입니다. 아니면 해당 사안과 관련된 정보를 찾고 있습니다. 잠시만 기다려 주세요. ";
                 chatOutput.appendChild(newMessageUser); // 사용자 메시지 채팅창에 추가
                 chatOutput.appendChild(newMessageHelper); // helper 메시지 채팅창에 추가
                 document.getElementById("input-box").value = ""; // 입력 상자 초기화
